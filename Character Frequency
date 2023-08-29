@@ -1,0 +1,24 @@
+s=input()
+c=1
+t=''
+d=0
+while d<len(s)-1:
+    c=1
+    if s[d]==s[d+1]:
+        t=t+s[d]
+    while s[d]==s[d+1]:
+        c+=1
+        d+=1
+    
+    if c!=1:
+        t=t+str(c)
+    else:
+        t=t+s[d]
+    d+=1
+    
+if s[len(s)-2]==s[len(s)-1]:
+    t=t+str(c)
+else:
+    t=t+s[len(s)-1]
+print(t)
+        
