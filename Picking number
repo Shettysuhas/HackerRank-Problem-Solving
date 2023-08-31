@@ -1,0 +1,94 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'pickingNumbers' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY a as parameter.
+#
+
+def pickingNumbers(a):
+    o=0
+    c=[0]
+    m=0
+    d=0
+    s=sorted(a)
+    print(s)
+    if len(s)==2:
+        if s[0]-s[1]<=1:
+            return 2
+        else:
+            return 2
+    w=list(set(s))
+    if len(w)==2:
+        t=s.count(w[0])
+        y=s.count(w[1])
+        return max(t,y)
+    u=[]
+    for i in range(len(w)):
+        u.append(s.count(w[i]))
+    # print(s.count(s[0]))
+    o=max(u)
+    # if len(v)==len(u):
+    #     return max(u)
+    if s.count(s[0])==len(s):
+        return len(s)
+    for i in range(len(s)-1):
+        if s[i]!=s[i+1]:
+            
+            c.append(i+1)
+    c.append(len(s))
+    
+    print(c)
+    for i in range(len(c)-2):
+        r=c[i+1]
+        
+        print(s[r-1])
+        print(s[r])
+        if abs(s[r-1]-s[r])<=1:
+            print(1)
+            
+            m=abs(c[i]-c[i+2])
+            print(m)
+        if m>d:
+            d=m
+        # print(d)   
+    return max(o,d)
+    
+    
+    # c=0
+    # f=0
+    # k=1
+    # while k==1:
+    #     h=0
+    #     d=f
+    #     s=d
+    #     while abs(a[d]-a[d+1])<=1 and d<len(a)-2 and h<2:
+    #         if a[d]!=a[d+1]:
+    #             h+=1
+    #             f=d+1
+    #         d+=1
+    #     if len(a[s:d+1])>c:
+    #         c=len(a[s:(d+1)])
+    #     if d>len(a)-1:
+    #         k=0
+    
+    # return c
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    a = list(map(int, input().rstrip().split()))
+
+    result = pickingNumbers(a)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
