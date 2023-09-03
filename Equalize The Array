@@ -1,0 +1,51 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'equalizeArray' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def equalizeArray(arr):
+    m=0
+    l=0
+    if len(arr)==1:
+        return 0
+    if len(arr)==2: 
+        if arr.count(arr[0])==2:
+            return 0
+        else:
+            return 1
+    if len(arr)==arr.count(arr[0]):
+        return 0
+    for i in range(len(arr)):
+        if arr.count(arr[i])>m:
+            m=arr.count(arr[i])
+            l=i
+    e=arr[l]
+    c=0
+    for i in  range(len(arr)):
+        if arr[i]==e:
+            continue
+        else:
+            c+=1
+    return c
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = equalizeArray(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
